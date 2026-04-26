@@ -8,7 +8,7 @@ simbolos = string.punctuation # "!"#$%&'..."
 
 #Função Fabrica de senha
 def gerar_senha(tamanho):
-    caracteres = string.ascii_letters + string.digits + string.punctuation
+    caracteres = string.ascii_letters + string.digits #+ string.punctuation
     senha = ""
     for i in range(tamanho):
         senha += random.choice(caracteres)
@@ -25,6 +25,8 @@ while True:
                 for i in range(qtd):
                     nova_senha = gerar_senha(tamanho)
                     print(f'{i+1}ª senha: {nova_senha}')
+                    with open("historico_senhas.txt","a") as arquivo:
+                        arquivo.write(f"Senha {i+1}: {nova_senha}\n") 
                 break
             except:
                 print('Ops! Digite um numero inteiro...')
